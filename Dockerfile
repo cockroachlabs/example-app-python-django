@@ -2,6 +2,7 @@ FROM python:3.8
 
 COPY cockroach_example ./cockroach_example
 COPY requirements.txt ./
+COPY certs ./certs
 
 RUN pip install -r requirements.txt
 
