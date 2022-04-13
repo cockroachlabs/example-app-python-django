@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,10 +73,15 @@ WSGI_APPLICATION = 'cockroach_example.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(default=os.path.expandvars(
-    os.environ['DATABASE_URL']), engine='django_cockroachdb')
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django_cockroachdb',
+        'NAME': 'defaultdb',
+        'USER': 'root',
+        'HOST': 'localhost',
+        'PORT': '26257',
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
