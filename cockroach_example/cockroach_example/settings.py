@@ -76,10 +76,16 @@ WSGI_APPLICATION = 'cockroach_example.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django_cockroachdb',
-        'NAME': 'defaultdb',
-        'USER': 'root',
-        'HOST': 'localhost',
-        'PORT': '26257',
+        'NAME': '{database}',
+        'USER': '{username}',
+        'PASSWORD': '{password}',
+        'HOST': '{host}',
+        'PORT': '{port}',
+        'OPTIONS': {
+            'sslmode': 'verify-full',
+            'options': '--cluster={routing-id}',
+            'application_name': 'docs_simplecrud_django'
+        },
     },
 }
 
